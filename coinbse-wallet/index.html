@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coinbse Wallet</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <a href="#"><div class="logo-icon"></div></a>
+            </div>
+            <div class="search-bar">
+                <button class="search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search coins, apps...</span>
+                </button>
+            </div>
+            <div class="header-buttons">
+                <button class="create-wallet-btn">Create a wallet</button>
+                <button class="connect-btn">Connect</button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" id="tab--trending">Trending</button>
+            <button class="tab-btn" id="tab--explore">Explore</button>
+            <button class="tab-btn" id="tab--create">Create</button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Trending Tab Content -->
+            <div class="tab-content trending-content active">
+                <section class="hero-section">
+                    <div class="fresh-drop">
+                        <button class="tag-button">FRESH DROP</button>
+                        <div class="creator-info">
+                            <img src="https://via.placeholder.com/40" alt="Creator" class="creator-avatar">
+                            <span class="creator-name">TAKASHI MURAKAMI</span>
+                        </div>
+                        <h1 class="drop-title">108 Flowers Revised</h1>
+                        <p class="drop-description">Mint 108 Flowers Revised NFTs</p>
+                        <button class="mint-button">Mint</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://via.placeholder.com/600x400" alt="108 Flowers Revised" class="nft-image">
+                    </div>
+                </section>
+
+                <section class="trending-section">
+                    <h2 class="section-title">Trending onchain</h2>
+                    <p class="section-description">The onchain experiences everyone's doing today</p>
+                    <a href="#" class="see-more">See experiences</a>
+
+                    <div class="nft-grid">
+                        <!-- NFT Card 1 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="Satoshi's Secret" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">MX1000</div>
+                                <div class="nft-title">Satoshi's Secret</div>
+                                <button class="action-button">Play</button>
+                            </div>
+                        </div>
+
+                        <!-- NFT Card 2 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="Three Artists: Paperclip" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">NOUNISH</div>
+                                <div class="nft-title">Three Artists: Paperclip</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+
+                        <!-- NFT Card 3 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="Levity - Flip it" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">COOP RECORDS</div>
+                                <div class="nft-title">Levity - Flip it</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+
+                        <!-- NFT Card 4 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="NOBS — Digital Book" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">NOBS BY DREW HANLEN</div>
+                                <div class="nft-title">NOBS — Digital Book (Onchain...)</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nft-grid">
+                        <!-- NFT Card 5 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="Disco Lines - RWEOK?" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">COOP RECORDS</div>
+                                <div class="nft-title">Disco Lines - RWEOK?</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+
+                        <!-- NFT Card 6 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="Vandelux - Motion" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">COOP RECORDS</div>
+                                <div class="nft-title">Vandelux - Motion</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+
+                        <!-- NFT Card 7 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="higher in blue 01" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">PRIYANKA</div>
+                                <div class="nft-title">higher in blue 01</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+
+                        <!-- NFT Card 8 -->
+                        <div class="nft-card">
+                            <div class="nft-image-container">
+                                <img src="https://via.placeholder.com/300" alt="MPH - 2 People" class="nft-image">
+                                <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                            </div>
+                            <div class="nft-info">
+                                <div class="creator">COOP RECORDS</div>
+                                <div class="nft-title">MPH - 2 People</div>
+                                <button class="action-button">Mint</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Explore Tab Content -->
+            <div class="tab-content explore-content">
+                <div class="nft-grid">
+                    <!-- NFT Card 1 -->
+                    <div class="nft-card">
+                        <div class="nft-image-container">
+                            <img src="https://via.placeholder.com/300" alt="Plant-based eats with Shantell Martin" class="nft-image">
+                            <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="creator">PODWORKS</div>
+                            <div class="nft-title">Plant-based eats with Shantell Martin</div>
+                            <button class="action-button">Mint</button>
+                        </div>
+                    </div>
+
+                    <!-- NFT Card 2 -->
+                    <div class="nft-card">
+                        <div class="nft-image-container">
+                            <img src="https://via.placeholder.com/300" alt="angelbaby - nothing really matters" class="nft-image">
+                            <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="creator">HUME COLLECTIVE</div>
+                            <div class="nft-title">angelbaby - nothing really matters</div>
+                            <button class="action-button">Mint</button>
+                        </div>
+                    </div>
+
+                    <!-- NFT Card 3 -->
+                    <div class="nft-card">
+                        <div class="nft-image-container">
+                            <img src="https://via.placeholder.com/300" alt="ODESZA - Sun Models" class="nft-image">
+                            <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="creator">COOP RECORDS</div>
+                            <div class="nft-title">ODESZA - Sun Models</div>
+                            <button class="action-button">Mint</button>
+                        </div>
+                    </div>
+
+                    <!-- NFT Card 4 -->
+                    <div class="nft-card">
+                        <div class="nft-image-container">
+                            <img src="https://via.placeholder.com/300" alt="NOBS — Golden Bull" class="nft-image">
+                            <button class="share-button"><i class="fa-solid fa-share"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="creator">NOBS BY DREW HANLEN</div>
+                            <div class="nft-title">NOBS — Golden Bull</div>
+                            <button class="action-button">Mint</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Tab Content -->
+            <div class="tab-content create-content">
+                <div class="create-options">
+                    <div class="create-option">
+                        <div class="create-icon mint-icon"></div>
+                        <h2>Create a mint</h2>
+                        <p>Put your creativity onchain, share with the world, and start earning</p>
+                        <button class="create-mint-btn">Create mint</button>
+                    </div>
+                    <div class="create-option">
+                        <div class="create-icon gallery-icon"></div>
+                        <h2>Create a gallery</h2>
+                        <p>Start a themed space for anyone to add mints</p>
+                        <button class="create-gallery-btn">Create gallery</button>
+                    </div>
+                </div>
+
+                <div class="explore-galleries">
+                    <h2>Explore galleries</h2>
+                    <p>Create and start earning, or browse creations from open galleries</p>
+                    <div class="sort-by">
+                        <span>Sort by</span>
+                        <button class="sort-dropdown">Trending <i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="https://www.base.org/jobs" class="footer-link">We're hiring</a>
+                <a href="/dapp-terms-of-service" class="footer-link">Terms of service</a>
+                <a href="/dapp-privacy-policy" class="footer-link">Privacy policy</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal Overlays -->
+    <div class="modal-overlay" id="connect-modal">
+        <div class="modal-content">
+            <h2>Get started onchain</h2>
+            <button class="signup-btn">
+                <i class="fa-solid fa-user"></i>
+                <div class="btn-text">
+                    <span>Sign up</span>
+                    <span class="btn-description">The fastest and easiest way to get started</span>
+                </div>
+            </button>
+            <div class="modal-divider">or connect an existing wallet</div>
+            <button class="wallet-option">
+                <div class="wallet-icon coinbase-icon"></div>
+                <span>Coinbase Wallet</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <button class="wallet-option">
+                <div class="wallet-icon walletconnect-icon"></div>
+                <span>WalletConnect</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <p class="terms-text">
+                By connecting a wallet, you agree to our 
+                <a href="/dapp-terms-of-service">Terms of Service</a> and 
+                <a href="/dapp-privacy-policy">Privacy Policy</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="cookie-notice">
+        <p>We use strictly necessary cookies to enable essential functions, such as security. For more information, see our <a href="https://www.coinbase.com/legal/cookie">Cookie Policy</a>.</p>
+        <button class="dismiss-btn">Dismiss</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
