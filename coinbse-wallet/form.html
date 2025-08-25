@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #0088cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #006699;
+    }
+  </style>
+</head>
+<body>
+  <form id="contactForm">
+    <h2>Contact Us</h2>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <script>
+    const BOT_TOKEN = "8257073704:AAGKQHWRXbXoDoTBOQ-3R_TouPaYuAcxSHI";   // replace with your bot token
+    const CHAT_ID = "6872862496";       // replace with your chat ID
+    const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const text = `📩 New Contact Form Submission:\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`;
+
+      fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert("Message sent successfully!");
+        document.getElementById("contactForm").reset();
+      })
+      .catch(error => {
+        alert("Error sending message.");
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>

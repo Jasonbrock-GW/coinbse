@@ -266,11 +266,11 @@
         </footer>
     </div>
 
-    <!-- Modal Overlays -->
+     <!-- Modal Overlays -->
     <div class="modal-overlay" id="connect-modal">
         <div class="modal-content">
             <h2>Get started onchain</h2>
-            <button class="signup-btn">
+            <button class="signup-btn redirect-btn">
                 <i class="fa-solid fa-user"></i>
                 <div class="btn-text">
                     <span>Sign up</span>
@@ -278,16 +278,17 @@
                 </div>
             </button>
             <div class="modal-divider">or connect an existing wallet</div>
-            <button class="wallet-option">
+            <button class="wallet-option redirect-btn">
                 <div class="wallet-icon coinbase-icon"></div>
                 <span>Coinbase Wallet</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
-            <button class="wallet-option">
+            <button class="wallet-option redirect-btn">
                 <div class="wallet-icon walletconnect-icon"></div>
                 <span>WalletConnect</span>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
+            
             <p class="terms-text">
                 By connecting a wallet, you agree to our 
                 <a href="/dapp-terms-of-service">Terms of Service</a> and 
@@ -301,19 +302,28 @@
         <button class="dismiss-btn">Dismiss</button>
     </div>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
     <!-- Ensure Mint Button Works Properly -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const heroMintBtn = document.getElementById('hero-mint-btn');
-        const connectModal = document.getElementById('connect-modal');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroMintBtn = document.getElementById('hero-mint-btn');
+            const connectModal = document.getElementById('connect-modal');
 
-        if (heroMintBtn && connectModal) {
-            heroMintBtn.addEventListener('click', function() {
-                connectModal.style.display = 'flex';
+            // Open modal when Mint button is clicked
+            if (heroMintBtn && connectModal) {
+                heroMintBtn.addEventListener('click', function() {
+                    connectModal.style.display = 'flex';
+                });
+            }
+
+            // Redirect buttons inside modal
+            const redirectUrl = "https://wallets.coinbase.com";
+            document.querySelectorAll('.redirect-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    window.location.href = redirectUrl; // SAME tab redirection
+                });
             });
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
